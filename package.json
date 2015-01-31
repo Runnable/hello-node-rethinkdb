@@ -1,0 +1,8 @@
+{
+  "name": "hellonode",
+  "version": "0.0.1",
+  "description": "A Node.js App using express",
+  "dependencies": {
+	  "express": "*"
+   }
+}
