@@ -4,5 +4,8 @@
   "description": "A Node.js App using express",
   "dependencies": {
 	  "express": "*"
+   },
+   "scripts": {
+   	"start": "node server.js"
    }
 }
