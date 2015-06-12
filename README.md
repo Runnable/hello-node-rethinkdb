@@ -1,10 +1,3 @@
 # hellonode
-aaasd
-\sd
-
-\
-sdfg
-
-asdf
-
+1
 
