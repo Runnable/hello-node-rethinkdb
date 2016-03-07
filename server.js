@@ -19,4 +19,4 @@ http.createServer(function (req, res) {
   }
 }).listen(process.env.PORT || 80);
 
-console.log('NEW Server running at http://127.0.0.1:80/')
+console.log('Server running at http://127.0.0.1:80/')
