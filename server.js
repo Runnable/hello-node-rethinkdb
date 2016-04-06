@@ -1,7 +1,10 @@
-var http = require('http');
-var r = require('rethinkdb');
+const http = require('http');
+const r = require('rethinkdb');
 
 http.createServer(function (req, res) {
+  let opts = {
+    IS_MIRRORED_DOCKERFILE: process.env.IS_MIRRORED_DOCKERFILE
+  }
   res.writeHead(200, {'Content-Type': 'text/plain'});
   if (process.env.RETHINKDB) {
     console.log('Connecting to Rethinkdb...')
@@ -9,13 +12,22 @@ http.createServer(function (req, res) {
       host: process.env.RETHINKDB
     }, function(err, conn) {
       if (err) {
-        res.end('Hello: Error connecting to DB', err);
+        res.json({
+          message: 'Hello: Error connecting to DB',
+          opts: opts,
+          err: err
+        });
       }
-      res.end('Hello: Succesfully connected to DB');
+      res.json({
+        message: 'Hello: Succesfully connected to DB',
+        opts: opts
+      });
     });
-
   } else {
-    res.end('Hello: No RethinkDB Variables set');
+    res.json({
+      message: 'Hello: No RethinkDB Variables set',
+      opts: opts
+    });
   }
 }).listen(process.env.PORT || 80);
 
