@@ -2,6 +2,8 @@
 const http = require('http')
 const r = require('rethinkdb')
 
+const j = (obj) => JSON.stringify(obj, null, '  ')
+
 http.createServer(function (req, res) {
   let opts = {
     IS_MIRRORED_DOCKERFILE: process.env.IS_MIRRORED_DOCKERFILE
@@ -13,22 +15,22 @@ http.createServer(function (req, res) {
       host: process.env.RETHINKDB
     }, function(err, conn) {
       if (err) {
-        res.json({
+        res.end(j({
           message: 'Hello: Error connecting to DB',
           opts: opts,
           err: err
-        })
+        }))
       }
-      res.json({
+      res.end(j({
         message: 'Hello: Succesfully connected to DB',
         opts: opts
-      })
+      }))
     })
   } else {
-    res.json({
+    res.json(j({
       message: 'Hello: No RethinkDB Variables set',
       opts: opts
-    })
+    }))
   }
 }).listen(process.env.PORT || 80)
 
