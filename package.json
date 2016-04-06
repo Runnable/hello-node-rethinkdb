@@ -4,7 +4,7 @@
   "description": "A Node.js App using express",
   "dependencies": {
     "express": "*",
-    "rethinkdb": "^2.2.2"
+    "rethinkdb": "2.0.3"
   },
   "scripts": {
     "start": "node server.js"
