@@ -1,10 +1,4 @@
-# hellonode
-8
+# hello-node-rethinkdb
 
-Random change to master branch
-2016-01-21T21:21:02.436Z
-2016-01-21T21:21:06.668Z
-2016-01-21T21:21:45.841Z
-2016-01-21T21:22:02.128Z
-2016-01-21T21:23:02.361Z
-2016-01-21T21:38:13.797Z
+Any content past this point is test content...
+
