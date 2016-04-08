@@ -27,7 +27,7 @@ http.createServer(function (req, res) {
       }))
     })
   } else {
-    res.json(j({
+    res.end(j({
       message: 'Hello: No RethinkDB Variables set',
       opts: opts
     }))
