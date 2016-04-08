@@ -6,13 +6,11 @@ ENV IS_MIRRORED_DOCKERFILE 1
 # Open up ports on the container
 EXPOSE 80 8000 8080 3000
 
-ADD ["./package.json", "/hello-node-rethinkdb"]
-WORKDIR /hello-node-rethinkdb
+ADD ["./package.json", "./"]
 RUN npm install # runnable-cache
 
 WORKDIR /
-ADD ["./*", "/hello-node-rethinkdb"]
+ADD ["./*", "./"]
 
 # Command to start the app
-WORKDIR /hello-node-rethinkdb
 CMD npm start
