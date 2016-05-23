@@ -1,37 +1,49 @@
 'use strict'
 const http = require('http')
 const r = require('rethinkdb')
+require('rethinkdb-init')(r);
 
 const j = (obj) => JSON.stringify(obj, null, '  ')
 
 http.createServer(function (req, res) {
   let opts = {
-    IS_MIRRORED_DOCKERFILE: process.env.IS_MIRRORED_DOCKERFILE
+    IS_MIRRORED_DOCKERFILE: process.env.IS_MIRRORED_DOCKERFILE,
+    RUNNABLE_CONTAINER_ID: process.env.RUNNABLE_CONTAINER_ID,
+    HOSTNAME: process.env.HOSTNAME,
+  }
+  if (process.env.NAME) {
+    opts.NAME = process.env.NAME
   }
   res.writeHead(200, {'Content-Type': 'text/plain'})
-  if (process.env.RETHINKDB) {
-    console.log('Connecting to Rethinkdb...')
-    r.connect({
-      host: process.env.RETHINKDB
-    }, function(err, conn) {
-      if (err) {
-        res.end(j({
-          message: 'Hello: Error connecting to DB',
-          opts: opts,
-          err: err
-        }))
-      }
-      res.end(j({
-        message: 'Hello: Succesfully connected to DB',
-        opts: opts
-      }))
-    })
-  } else {
+  if (!process.env.RETHINKDB) {
     res.end(j({
       message: 'Hello: No RethinkDB Variables set',
       opts: opts
     }))
   }
+  console.log('Connecting to Rethinkdb...')
+  r.init({
+    host: process.env.RETHINKDB
+  }, [
+    'hello-world',
+    process.env.DB_NAME || 'master'
+  ])
+    .then(function (conn) {
+      return [r.dbList().run(conn), conn]
+    })
+    .then(function (dbList, conn) {
+      res.end(j({
+        message: 'Hello: Succesfully connected to DB',
+        opts: opts
+      }))
+    })
+    .catch(function (err) {
+      res.end(j({
+        message: 'Hello: Error connecting to DB',
+        opts: opts,
+        err: err
+      }))
+    })
 }).listen(process.env.PORT || 80)
 
 console.log('Server running at http://127.0.0.1:80/')
