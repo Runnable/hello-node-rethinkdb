@@ -5,7 +5,7 @@
   "dependencies": {
     "express": "*",
     "rethinkdb": "2.0.0",
-    "rethinkdb-init": "^0.1.1"
+    "rethinkdb-init": "^0.2.1"
   },
   "scripts": {
     "start": "node server.js"
