@@ -26,9 +26,9 @@ http.createServer(function (req, res) {
   console.log('Connecting to Rethinkdb...')
   r.init({
     host: process.env.RETHINKDB,
-    db: process.env.DB_NAME || 'hello-node-rethinkdb'
+    db: process.env.DB_NAME || 'hello_node_rethinkdb'
   }, [
-    'hello-world',
+    'hello_world',
     process.env.TABLE_NAME || 'master'
   ])
     .then(function (conn) {
