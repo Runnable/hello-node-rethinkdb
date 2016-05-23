@@ -33,14 +33,15 @@ http.createServer(function (req, res) {
   ])
     .then(function (conn) {
       console.log('Getting db list...')
-      return Promise.all([r.dbList().run(conn), conn])
+      return Promise.all([r.dbList().run(conn), r.tableList().run(conn)])
     })
-    .then(function (dbList, conn) {
+    .spread(function (dbList, tableList) {
       console.log('DB list...', dbList)
       res.end(j({
         message: 'Hello: Succesfully connected to DB',
         opts: opts,
-        dbList: dbList
+        dbList: dbList,
+        tableList
       }))
     })
     .catch(function (err) {
