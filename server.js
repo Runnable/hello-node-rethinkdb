@@ -26,19 +26,21 @@ http.createServer(function (req, res) {
   console.log('Connecting to Rethinkdb...')
   r.init({
     host: process.env.RETHINKDB,
-    db: 'test'
+    db: process.env.DB_NAME || 'hello-node-rethinkdb'
   }, [
     'hello-world',
-    process.env.DB_NAME || 'master'
+    process.env.TABLE_NAME || 'master'
   ])
     .then(function (conn) {
       console.log('Getting db list...')
       return Promise.all([r.dbList().run(conn), conn])
     })
     .then(function (dbList, conn) {
+      console.log('DB list...', dbList)
       res.end(j({
         message: 'Hello: Succesfully connected to DB',
-        opts: opts
+        opts: opts,
+        dbList: dbList
       }))
     })
     .catch(function (err) {
