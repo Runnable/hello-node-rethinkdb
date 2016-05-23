@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A Node.js App using express",
   "dependencies": {
+    "bluebird": "^3.4.0",
     "express": "*",
     "rethinkdb": "2.0.0",
     "rethinkdb-init": "^0.2.1"

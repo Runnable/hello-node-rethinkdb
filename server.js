@@ -1,4 +1,5 @@
 'use strict'
+const Promise = require('bluebird')
 const http = require('http')
 const r = require('rethinkdb')
 require('rethinkdb-init')(r);
@@ -32,7 +33,7 @@ http.createServer(function (req, res) {
   ])
     .then(function (conn) {
       console.log('Getting db list...')
-      return [r.dbList().run(conn), conn]
+      return Promise.all([r.dbList().run(conn), conn])
     })
     .then(function (dbList, conn) {
       res.end(j({
