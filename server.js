@@ -16,6 +16,7 @@ http.createServer(function (req, res) {
   }
   res.writeHead(200, {'Content-Type': 'text/plain'})
   if (!process.env.RETHINKDB) {
+    console.log('No `RETHINKDB` ENV vars set')
     res.end(j({
       message: 'Hello: No RethinkDB Variables set',
       opts: opts
@@ -29,6 +30,7 @@ http.createServer(function (req, res) {
     process.env.DB_NAME || 'master'
   ])
     .then(function (conn) {
+      console.log('Getting db list...')
       return [r.dbList().run(conn), conn]
     })
     .then(function (dbList, conn) {
@@ -38,6 +40,7 @@ http.createServer(function (req, res) {
       }))
     })
     .catch(function (err) {
+      console.log('Error: ', err)
       res.end(j({
         message: 'Hello: Error connecting to DB',
         opts: opts,
