@@ -6,10 +6,10 @@ ENV IS_MIRRORED_DOCKERFILE 1
 # Open up ports on the container
 EXPOSE 80 8000 8080 3000
 
+WORKDIR /app
 ADD ["./package.json", "./"]
 RUN npm install # runnable-cache
 
-WORKDIR /
 ADD ["./*", "./"]
 
 # Command to start the app
