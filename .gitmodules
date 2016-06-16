@@ -1,0 +1,3 @@
+[submodule "button-clicker"]
+	path = button-clicker
+	url = git@github.com:Runnable/button-clicker.git
