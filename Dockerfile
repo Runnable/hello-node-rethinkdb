@@ -1,11 +1,11 @@
 # Full list of versions available here: https://registry.hub.docker.com/_/node/tags/manage/\n' +
 FROM node:4.2.3
 
+COPY ["./package.json", "/app"]
 WORKDIR /app
-COPY ["./package.json", "./"]
 RUN npm install # runnable-cache
 
-COPY ["./", "./"]
+COPY ["./", "/app"]
 
 ENV IS_MIRRORED_DOCKERFILE 1
 
