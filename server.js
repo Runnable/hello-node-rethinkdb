@@ -1,5 +1,5 @@
 'use strict'
-const Promise = require('bluebird')
+
 const http = require('http')
 const r = require('rethinkdb')
 require('rethinkdb-init')(r);
