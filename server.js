@@ -12,6 +12,7 @@ http.createServer(function (req, res) {
     IS_MIRRORED_DOCKERFILE: process.env.IS_MIRRORED_DOCKERFILE,
     RUNNABLE_CONTAINER_ID: process.env.RUNNABLE_CONTAINER_ID,
     HOSTNAME: process.env.HOSTNAME,
+    RETHINKDB: process.env.RETHINKDB
   }
   if (process.env.NAME) {
     opts.NAME = process.env.NAME
