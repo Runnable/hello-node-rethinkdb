@@ -2,7 +2,7 @@
 
 const http = require('http')
 const r = require('rethinkdb')
-require('rethinkdb-init')(r);
+require('rethinkdb-init')(r)
 
 const j = (obj) => JSON.stringify(obj, null, '  ')
 const port = parseInt(process.env.PORT || 80, 10)
@@ -54,6 +54,6 @@ http.createServer(function (req, res) {
         err: err
       }))
     })
-}).listen(7000)
+}).listen(port)
 
 console.log(`Server running at http://127.0.0.1:${port}/`)
