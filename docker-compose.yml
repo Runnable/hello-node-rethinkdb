@@ -10,7 +10,7 @@ services:
       - RETHINKDB=rethinkdb
       - PORT=7000
   rethinkdb:
-    image: rethinkdb
+    image: runnable/rethinkdb
     ports:
         - "8080"
         - "28015"
