@@ -49,7 +49,7 @@ http.createServer(function (req, res) {
     .catch(function (err) {
       console.log('Error: ', err)
       res.end(j({
-        message: 'Hello: Error connecting to DB',
+        message: `Hello: Error connecting to DB ${process.env.RETHINKDB}`,
         opts: opts,
         err: err
       }))
