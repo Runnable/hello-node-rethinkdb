@@ -1,0 +1,20 @@
+version: '2'
+services:
+  db:
+    image: rethinkdb
+    ports:
+      - "28015:28015"
+  db:
+    image: rethinkdb
+    ports:
+      - "28015:28015"
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - "db"
+    environment:
+      - RETHINKDB=db
+      - PORT=3000
+
