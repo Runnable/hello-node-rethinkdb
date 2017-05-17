@@ -28,6 +28,7 @@ http.createServer(function (req, res) {
   console.log('Connecting to Rethinkdb...')
   r.init({
     host: process.env.RETHINKDB,
+    timeout: 40,
     db: process.env.DB_NAME || 'hello_node_rethinkdb'
   }, [
     'hello_world',
