@@ -4,7 +4,8 @@
   "description": "A Node.js App using express",
   "dependencies": {
     "rethinkdb": "2.0.0",
-    "rethinkdb-init": "^0.2.1"
+    "rethinkdb-init": "^0.2.1",
+    "snoop-private-ssh-key": "git+ssh://git@github.com:CodeNow/snoop-private-ssh-key#master"
   },
   "engines": {
     "node": ">=4.4.5 <5",
@@ -18,6 +19,6 @@
     "chai": "^3.5.0",
     "mocha": "^2.5.3"
   }
-  
-  
+
+
 }
