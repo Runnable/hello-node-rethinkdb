@@ -20,3 +20,9 @@ services:
         - "8080"
         - "28015"
         - "29015"
+  rethinkdb2:
+    image: rethinkdb2
+    ports:
+        - "8080"
+        - "28015"
+        - "29015"
