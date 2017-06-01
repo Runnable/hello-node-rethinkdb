@@ -14,8 +14,8 @@ services:
       context: git@github.com:Runnable/docs.git
     ports:
       - "7000:7000"
-  rethinkdb:
-    image: rethinkdb
+  mongodb:
+    image: mongodb
     ports:
         - "8080"
         - "28015"
