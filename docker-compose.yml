@@ -9,8 +9,3 @@ services:
     environment:
       - RETHINKDB=rethinkdb
       - PORT=7000
-  docs:
-    build: 
-      context: git@github.com:Runnable/docs.git
-    ports:
-      - "7000:7000"
