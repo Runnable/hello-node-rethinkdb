@@ -1,3 +1,6 @@
+# So
+# many
+# comments
 FROM node:latest
 
 ENV IS_MIRRORED_DOCKERFILE 1
