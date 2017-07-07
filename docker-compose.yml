@@ -3,14 +3,14 @@ services:
   web:
     build: .
     ports:
-      - "7000:7000"
+      - "80:80"
     links:
       - 'rethinkdb'
     environment:
       - RETHINKDB=rethinkdb
-      - PORT=7000
+      - PORT=80
   docs:
-    build: 
+    build:
       context: git@github.com:Runnable/docs.git
     ports:
       - "7000:7000"
