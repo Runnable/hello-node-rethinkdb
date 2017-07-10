@@ -14,6 +14,26 @@ services:
       context: git@github.com:Runnable/docs.git
     ports:
       - "7000:7000"
+
+  web2:
+    build: .
+    ports:
+      - "80:80"
+    links:
+      - 'rethinkdb'
+    environment:
+      - RETHINKDB=rethinkdb
+      - PORT=80
+  web3:
+    build: .
+    ports:
+      - "8000:8000"
+    links:
+      - 'rethinkdb'
+    environment:
+      - RETHINKDB=rethinkdb
+      - PORT=8000
+
   rethinkdb:
     image: rethinkdb
     ports:
